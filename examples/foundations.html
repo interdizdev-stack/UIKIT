@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brand UI / Основы и компоновка</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../ui-kit.css">
+</head>
+<body>
+  <main class="brand-container brand-section">
+    <h1 class="brand-display">Основы UI KIT</h1>
+    <p class="brand-body">Типографика, отступы, поверхности и сетки из единого источника токенов.</p>
+    <div class="brand-grid brand-grid--2">
+      <section class="brand-surface brand-stack" aria-labelledby="typeTitle">
+        <h2 class="brand-h2" id="typeTitle">Типографика</h2>
+        <div class="brand-h1">Заголовок H1</div>
+        <div class="brand-h2">Заголовок H2</div>
+        <div class="brand-h3">Заголовок H3</div>
+        <div class="brand-h4">Заголовок H4</div>
+        <div class="brand-h5">Заголовок H5</div>
+        <div class="brand-h6">Заголовок H6</div>
+        <p class="brand-body">Основной текст с комфортным межстрочным интервалом.</p>
+        <p class="brand-small">Дополнительный текст.</p>
+        <p class="brand-caption">Подпись к изображению или полю.</p>
+      </section>
+      <section class="brand-surface brand-stack" aria-labelledby="controlsTitle">
+        <h2 class="brand-h2" id="controlsTitle">Поля и состояния</h2>
+        <div><label class="form-label" for="foundationField">Значение</label><input class="form-control" id="foundationField" placeholder="Введите текст"></div>
+        <div><label class="form-label" for="foundationSelect">Вариант</label><select class="form-select" id="foundationSelect"><option>Первый вариант</option><option>Второй вариант</option></select></div>
+        <div class="brand-cluster"><button class="btn btn-primary" type="button">Основное действие</button><button class="btn btn-secondary" type="button">Дополнительное</button><button class="btn btn-primary" type="button" disabled>Недоступно</button></div>
+        <div class="brand-alert info" role="status"><div><strong>Одна библиотека</strong><p>Этот пример работает без catalog.css и catalog.js.</p></div></div>
+        <a href="../tokens.json" download>Скачать токены</a>
+      </section>
+    </div>
+    <section class="brand-section brand-reading" data-bs-theme="dark" aria-labelledby="nestedTitle">
+      <div class="brand-surface brand-stack">
+        <h2 class="brand-h2" id="nestedTitle">Вложенная тёмная тема</h2>
+        <p class="brand-body">Тема контейнера применяется к тексту, полям, ссылкам и семантическим состояниям.</p>
+        <div class="brand-cluster"><span class="text-success">Успех</span><span class="text-warning">Предупреждение</span><span class="text-danger">Ошибка</span><span class="text-info">Информация</span></div>
+        <label class="form-label" for="nestedField">Поле в тёмной теме</label><input class="form-control" id="nestedField" placeholder="Введите текст">
+      </div>
+    </section>
+  </main>
+  <script src="../vendor/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/lucide-core.min.js"></script>
+  <script src="../ui-kit.js"></script>
+</body>
+</html>

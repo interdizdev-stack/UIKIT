@@ -1,0 +1,44 @@
+{
+  "fonttools": "4.66.1",
+  "brotli": "1.2.0",
+  "fonts": [
+    {
+      "source": "assets/fonts/manrope.ttf",
+      "sourceBytes": 164700,
+      "sourceSHA256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+      "woff2": "assets/fonts/manrope.woff2",
+      "woff2Bytes": 53892,
+      "woff2SHA256": "30b83738add8c9edd9e3450b98036a9a8fb5668d0cbd4eb0ce5fe6761197f21f",
+      "license": "assets/fonts/manrope-OFL.txt",
+      "licenseSHA256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+      "codepoints": 678,
+      "glyphs": 742,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200.0,
+          "max": 800.0
+        }
+      ]
+    },
+    {
+      "source": "assets/fonts/oswald.ttf",
+      "sourceBytes": 172088,
+      "sourceSHA256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+      "woff2": "assets/fonts/oswald.woff2",
+      "woff2Bytes": 72104,
+      "woff2SHA256": "6bbc262410618b85e3d3154309cad8346a9e3c3085a61d04b3710a4cf2831f4d",
+      "license": "assets/fonts/oswald-OFL.txt",
+      "licenseSHA256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+      "codepoints": 850,
+      "glyphs": 883,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200.0,
+          "max": 700.0
+        }
+      ]
+    }
+  ]
+}

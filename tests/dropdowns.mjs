@@ -1,0 +1,90 @@
+import assert from 'node:assert/strict';
+import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { browser, sleep, root } from './runtime.mjs';
+const check = (name, result) => { assert.ok(result, name); console.log('PASS ' + name); };
+await browser(async ({ evaluate, navigate, viewport, key, call, screenshot }) => {
+  const pointer = async selector => {
+    const point = await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)}),r=e.getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2}})()`);
+    await call('Input.dispatchMouseEvent', {type:'mouseMoved',x:0,y:0});
+    await call('Input.dispatchMouseEvent', { type: 'mouseMoved', ...point });
+  };
+  const routes = ['buttons','forms','navigation','feedback','tables','cookies','modals','lightbox','cards','lists','identity','site-navigation','advanced-forms','site-blocks','colors','typography','references','icons','pages','compositions','integration'];
+  for (const route of routes) {
+    await viewport(1440); await navigate('#' + route); await sleep(80);
+    check('all catalog selects use themed controls: ' + route, await evaluate(`(()=>{return [...document.querySelectorAll('select.form-select')].every(s=>!s.hasAttribute('data-native-select')&&(s.hasAttribute('data-brand-choice')?s.nextElementSibling?.classList.contains('brand-choice'):s.nextElementSibling?.classList.contains('brand-select')))&&![...document.querySelectorAll('select')].some(s=>s.multiple&&!s.hasAttribute('data-brand-choice'))})()`));
+  }
+  for (const width of [320,390,768,1440]) for (const theme of ['light','dark']) {
+    await viewport(width); await navigate('#modals'); await sleep(80);
+    await evaluate(`document.documentElement.dataset.bsTheme='${theme}';document.documentElement.style.scrollBehavior='auto';document.querySelector('#exampleInspector').scrollIntoView({behavior:'instant',block:'start'})`);
+    check('inspector popup layout ' + width + ' ' + theme, await evaluate(`(()=>{return [...document.querySelectorAll('.catalog-example-controls select:not(:disabled)')].every(s=>{const t=s.nextElementSibling.querySelector('button');t.scrollIntoView({behavior:'instant',block:'center'});t.focus({preventScroll:true});t.click();const m=document.getElementById(t.getAttribute('aria-controls')),r=m.getBoundingClientRect(),style=getComputedStyle(m),selected=m.querySelector('[aria-selected="true"]');const ok=!m.hidden&&m.parentElement===document.body&&r.left>=0&&r.right<=document.documentElement.clientWidth+1&&r.top>=0&&r.bottom<=innerHeight&&style.backgroundColor===getComputedStyle(document.querySelector('#exampleInspector')).backgroundColor&&getComputedStyle(selected,'::after').content.includes('✓')&&Math.abs(r.width-t.getBoundingClientRect().width)<1;t.click();return ok})})()`));
+  }
+  await viewport(1440); await navigate('#modals'); await sleep(100);
+  await evaluate(`(async()=>{document.documentElement.dataset.bsTheme='dark';document.documentElement.style.scrollBehavior='auto';const s=document.querySelector('[data-example-select]'),t=s.nextElementSibling.querySelector('button');t.scrollIntoView({behavior:'instant',block:'center'});t.focus({preventScroll:true});await new Promise(r=>setTimeout(r,80));t.click()})()`);
+  await pointer('.brand-select-menu:not([hidden]) [role="option"]:nth-child(2)');
+  check('ordinary select hover preserves selected check and adds accent outline', await evaluate(`(()=>{const s=document.querySelector('[data-example-select]'),t=s.nextElementSibling.querySelector('button'),m=document.getElementById(t.getAttribute('aria-controls')),active=m.querySelector('.is-active'),selected=m.querySelector('[aria-selected="true"]');return active!==selected&&getComputedStyle(active).outlineStyle==='solid'&&getComputedStyle(active,'::after').content==='none'&&getComputedStyle(selected,'::after').content.includes('✓')&&s.value==='modal-message'})()`));
+  await sleep(200); await screenshot('dropdown-inspector-dark-desktop.png');
+  await key('Enter'); await sleep(100);
+  check('example selection by hover and Enter updates source and deep link', await evaluate(`document.querySelector('[data-example-select]').value==='modal-confirm'&&location.hash==='#modals/modal-confirm'&&document.querySelector('[data-example-select]').nextElementSibling.querySelector('.brand-select-value').textContent==='Подтверждение'`));
+  await evaluate(`(()=>{const t=document.querySelector('[data-example-width]').nextElementSibling.querySelector('button');t.scrollIntoView({behavior:'instant',block:'center'});t.focus({preventScroll:true});t.click()})()`);
+  await key('End'); await key('Enter'); await sleep(100);
+  check('custom viewport selector updates iframe', await evaluate(`document.querySelector('iframe').contentWindow.innerWidth===1440&&document.querySelector('[data-example-width]').nextElementSibling.querySelector('.brand-select-value').textContent==='1440 px'`));
+  await evaluate(`(()=>{const t=document.querySelector('[data-example-theme]').nextElementSibling.querySelector('button');t.focus({preventScroll:true});t.click()})()`); await key('End'); await key('Enter'); await sleep(180);
+  check('custom preview theme selector updates independent document', await evaluate(`document.querySelector('iframe').contentDocument.documentElement.dataset.bsTheme==='dark'`));
+  await viewport(320); await navigate('#modals'); await sleep(100);
+  await evaluate(`(()=>{document.documentElement.dataset.bsTheme='dark';document.documentElement.style.scrollBehavior='auto';const t=document.querySelector('[data-example-width]').nextElementSibling.querySelector('button');t.scrollIntoView({behavior:'instant',block:'center'});t.focus({preventScroll:true});t.click()})()`);
+  await sleep(200); await evaluate(`(()=>{const t=document.querySelector('[data-example-width]').nextElementSibling.querySelector('button');if(t.getAttribute('aria-expanded')==='false')t.click()})()`); await sleep(100);
+  check('mobile viewport list stays visibly open after scroll settles', await evaluate(`document.querySelector('[data-example-width]').nextElementSibling.querySelector('button').getAttribute('aria-expanded')==='true'`));
+  await screenshot('dropdown-inspector-dark-mobile.png');
+  await navigate('#icons'); await sleep(100);
+  await evaluate(`(()=>{const t=document.querySelector('#iconSize').nextElementSibling.querySelector('button');t.scrollIntoView({behavior:'instant',block:'center'});t.focus({preventScroll:true});t.click()})()`); await key('End'); await key('Enter');
+  check('custom icon size selector updates icon', await evaluate(`document.querySelector('#iconSize').value==='48'&&getComputedStyle(document.querySelector('#selectedIcon svg')).width==='48px'`));
+  await navigate('examples/table.html');
+  await evaluate(`(()=>{document.documentElement.style.scrollBehavior='auto';const t=document.querySelector('[data-table-page-size]').nextElementSibling.querySelector('button');t.scrollIntoView({behavior:'instant',block:'center'});t.focus({preventScroll:true})})()`); await sleep(80); await evaluate(`document.querySelector('[data-table-page-size]').nextElementSibling.querySelector('button').click()`); await key('Home'); await key('ArrowDown'); await key('Enter');
+  check('custom page size keeps table value, label and focus synchronized', await evaluate(`(()=>{const s=document.querySelector('[data-table-page-size]'),t=s.nextElementSibling.querySelector('button');return s.value==='10'&&t.textContent==='10'&&document.activeElement===t&&document.querySelectorAll('tbody tr').length===10})()`));
+  check('programmatic page size refreshes themed label', await evaluate(`(()=>{BrandUI.table.get(document.querySelector('#projects')).update({pageSize:20});return document.querySelector('[data-table-page-size]').nextElementSibling.querySelector('button').textContent==='20'})()`));
+  await viewport(1440); await navigate('examples/advanced-forms.html');
+  await evaluate(`(()=>{BrandUI.theme.get().setMode('dark');document.documentElement.style.scrollBehavior='auto';const s=document.querySelector('#advanced-city');s.value='moscow';BrandUI.choice.get(s).update();const i=s.nextElementSibling.querySelector('input');i.scrollIntoView({behavior:'instant',block:'center'});i.focus({preventScroll:true})})()`);
+  await pointer('.brand-choice-menu:not([hidden]) [role="option"]:nth-child(2)');
+  check('searchable select hover retains committed selection and ARIA', await evaluate(`(()=>{const s=document.querySelector('#advanced-city'),i=s.nextElementSibling.querySelector('input'),m=document.getElementById(i.getAttribute('aria-controls')),selected=m.querySelector('[aria-selected="true"]'),active=m.querySelector('.is-active');return selected.textContent==='Москва'&&active!==selected&&active.getAttribute('aria-selected')==='false'&&i.getAttribute('aria-activedescendant')===active.id&&getComputedStyle(active).outlineStyle==='solid'&&s.value==='moscow'&&i.value==='Москва'})()`));
+  await key('Escape');
+  check('Escape cancels hover selection', await evaluate(`document.querySelector('#advanced-city').value==='moscow'`));
+  await evaluate(`BrandUI.choice.get(document.querySelector('#advanced-city')).open()`); await key('ArrowDown'); await key('ArrowDown');
+  check('searchable keyboard focus never changes selected/check before commit', await evaluate(`(()=>{const i=document.querySelector('#advanced-city').nextElementSibling.querySelector('input'),m=document.getElementById(i.getAttribute('aria-controls'));return m.querySelector('[aria-selected="true"]').textContent==='Москва'&&m.querySelector('.is-active').getAttribute('aria-selected')==='false'})()`));
+  await key('Enter');
+  check('searchable Enter commits highlighted value', await evaluate(`document.querySelector('#advanced-city').value==='kazan'`));
+  await evaluate(`(()=>{const i=document.querySelector('#advanced-skills').nextElementSibling.querySelector('input');i.scrollIntoView({behavior:'instant',block:'center'});i.focus({preventScroll:true})})()`);
+  await pointer('.brand-choice-menu:not([hidden]) [role="option"]:nth-child(2)');
+  check('multiselect hover preserves selected check', await evaluate(`(()=>{const s=document.querySelector('#advanced-skills'),i=s.nextElementSibling.querySelector('input'),m=document.getElementById(i.getAttribute('aria-controls'));return m.querySelector('.is-active').textContent==='Разработка'&&getComputedStyle(m.querySelector('.is-active')).outlineStyle==='solid'&&m.querySelector('[aria-selected="true"]').textContent==='Дизайн'&&new FormData(s.form).getAll('skills').join()==='design'})()`));
+  await sleep(200); await screenshot('dropdown-multiselect-dark-desktop.png');
+  await pointer('.brand-choice-menu:not([hidden]) [aria-disabled="true"]');
+  check('disabled choice never gets hover highlight or changes values', await evaluate(`(()=>{const s=document.querySelector('#advanced-skills'),m=document.getElementById(s.nextElementSibling.querySelector('input').getAttribute('aria-controls')),e=m.querySelector('[aria-disabled="true"]');e.click();return !e.classList.contains('is-active')&&getComputedStyle(e).outlineStyle==='none'&&new FormData(s.form).getAll('skills').join()==='design'})()`));
+  await key('Escape');
+  await evaluate(`(()=>{const i=document.querySelector('#advanced-autocomplete');i.value='';i.scrollIntoView({behavior:'instant',block:'center'});i.focus({preventScroll:true})})()`);
+  await pointer('.brand-choice-menu:not([hidden]) [role="option"]:nth-child(2)');
+  check('autocomplete hover highlights without a premature selection check', await evaluate(`(()=>{const i=document.querySelector('#advanced-autocomplete'),m=document.getElementById(i.getAttribute('aria-controls'));return m.querySelector('.is-active')&&!m.querySelector('[aria-selected="true"]')&&getComputedStyle(m.querySelector('.is-active')).outlineStyle==='solid'&&i.value===''})()`));
+  await key('Enter');
+  check('autocomplete Enter commits hovered suggestion', await evaluate(`document.querySelector('#advanced-autocomplete').value==='CSS'&&document.querySelector('#advanced-autocomplete').getAttribute('aria-expanded')==='false'`));
+  check('choice and autocomplete use the same chevron as ordinary select', await evaluate(`(()=>{const s=document.createElement('select');s.className='form-select';s.append(new Option('One'));document.body.append(s);BrandUI.init(s);const arrow=getComputedStyle(s.nextElementSibling.querySelector('button')).backgroundImage;return arrow!=='none'&&[...document.querySelectorAll('.brand-choice>input')].every(i=>getComputedStyle(i).backgroundImage===arrow)})()`));
+  check('autocomplete destroy restores source classes', await evaluate(`(async()=>{const i=document.querySelector('#advanced-autocomplete');await BrandUI.autocomplete.get(i).destroy();return !i.classList.contains('form-select')&&!i.hasAttribute('role')})()`));
+  await viewport(320); await navigate('examples/advanced-forms.html');
+  for (const theme of ['light','dark']) {
+    await evaluate(`(()=>{BrandUI.theme.get().setMode('${theme}');document.documentElement.style.scrollBehavior='auto';const i=document.querySelector('#advanced-skills').nextElementSibling.querySelector('input');i.scrollIntoView({behavior:'instant',block:'center'});i.focus({preventScroll:true});BrandUI.choice.get(document.querySelector('#advanced-skills')).open()})()`);
+    check('multiselect mobile popup bounds ' + theme, await evaluate(`(()=>{const i=document.querySelector('#advanced-skills').nextElementSibling.querySelector('input'),m=document.getElementById(i.getAttribute('aria-controls')),r=m.getBoundingClientRect();return !m.hidden&&r.left>=0&&r.right<=document.documentElement.clientWidth+1&&r.top>=0&&r.bottom<=innerHeight&&Math.abs(r.width-i.getBoundingClientRect().width)<1})()`));
+    await sleep(200); await screenshot('dropdown-multiselect-' + theme + '-mobile.png'); await key('Escape');
+  }
+  await viewport(1440); await navigate('#navigation'); await sleep(100);
+  await evaluate(`(()=>{document.documentElement.dataset.bsTheme='dark';document.documentElement.style.scrollBehavior='auto';const t=document.querySelector('.control-row [data-bs-toggle="dropdown"]');t.scrollIntoView({behavior:'instant',block:'center'});t.focus({preventScroll:true});t.click()})()`); await key('ArrowDown');
+  check('actions dropdown keyboard focus uses accent outline', await evaluate(`document.activeElement.classList.contains('dropdown-item')&&getComputedStyle(document.activeElement).outlineStyle==='solid'&&getComputedStyle(document.activeElement).outlineWidth==='1px'`));
+  await sleep(200); await screenshot('dropdown-actions-dark-desktop.png');
+  check('selected action retains accent text and check', await evaluate(`(()=>{const e=document.activeElement;e.classList.add('active');const m=e.closest('.dropdown-menu');const sample=document.createElement('span');sample.style.color='var(--ui-accent-text)';m.append(sample);const ok=getComputedStyle(e).color===getComputedStyle(sample).color&&getComputedStyle(e,'::after').content.includes('✓');sample.remove();return ok})()`));
+  await evaluate(`(()=>{const m=document.querySelector('.control-row .dropdown-menu'),li=document.createElement('li');li.innerHTML='<button class="dropdown-item" type="button" disabled>Недоступно</button>';m.append(li)})()`);
+  await pointer('.control-row .dropdown-item:disabled');
+  check('disabled action has no accent hover outline', await evaluate(`getComputedStyle(document.querySelector('.control-row .dropdown-item:disabled')).outlineStyle==='none'`));
+  await key('Escape');
+  check('actions dropdown Escape returns focus', await evaluate(`document.activeElement.matches('.control-row [data-bs-toggle="dropdown"]')&&!document.querySelector('.control-row .dropdown-menu').classList.contains('show')`));
+  await evaluate(`(()=>{const s=document.querySelector('#catalogSearch');s.value='форма';s.dispatchEvent(new Event('input',{bubbles:true}));s.scrollIntoView({behavior:'instant',block:'center'});s.focus({preventScroll:true})})()`); await key('ArrowDown');
+  check('catalog search result focus uses accent outline', await evaluate(`document.activeElement.matches('#searchResults a')&&getComputedStyle(document.activeElement).outlineWidth==='1px'`));
+  await navigate(pathToFileURL(join(root, 'index.html')).href + '#modals'); await sleep(120);
+  check('catalog custom selectors work offline', await evaluate(`location.protocol==='file:'&&[...document.querySelectorAll('.catalog-example-controls select:not(:disabled)')].every(s=>s.nextElementSibling.classList.contains('brand-select'))`));
+});

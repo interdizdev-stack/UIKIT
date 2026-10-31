@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brand UI / Модальные окна и Lightbox</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../ui-kit.css">
+  <style>
+    main { width: min(100% - 32px, 1080px); margin: 48px auto; }
+    h1 { font-size: 36px; }
+    h2 { margin: 40px 0 20px; }
+    .example-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="brand-heading">Модальные окна и Lightbox</h1>
+    <p class="text-body-secondary">Рабочие примеры общей библиотеки. Выберите окно или нажмите на изображение.</p>
+    <h2 class="brand-heading">Модальные окна</h2>
+    <div class="example-actions">
+      <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleMessageModal">Информационное окно<i data-lucide="info"></i></button>
+      <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleConfirmModal">Подтверждение действия<i data-lucide="circle-check"></i></button>
+      <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleFormModal">Форма в окне<i data-lucide="text-cursor-input"></i></button>
+    </div>
+    <p class="brand-alert success mt-3" id="overlayExampleStatus" role="status" hidden></p>
+    <h2 class="brand-heading">Lightbox / Галерея</h2>
+    <div id="standaloneGallery"></div>
+    <p class="text-body-secondary mt-3">Стрелки переключают изображения, Escape закрывает просмотр.</p>
+  </main>
+  <div id="modalExamplesRoot"></div>
+  <script src="../vendor/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/lucide-core.min.js"></script>
+  <script src="../ui-kit.js"></script>
+  <script src="../ui-kit-forms.js"></script>
+  <script src="overlays.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Brand UI / Библиотека компонентов</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="ui-kit.css">
+  <link rel="stylesheet" href="catalog.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">К компонентам</a>
+  <aside class="sidebar offcanvas-lg offcanvas-start" id="sidebar" tabindex="-1" aria-labelledby="sidebarTitle">
+    <div class="sidebar-brand">
+      <span class="brand-symbol" aria-hidden="true"><i data-lucide="asterisk"></i></span>
+      <div><strong id="sidebarTitle">BRAND UI<span>DESIGN SYSTEM</span></strong></div>
+      <button class="btn btn-ghost btn-icon d-lg-none ms-auto" type="button" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Закрыть меню"><i data-lucide="x"></i></button>
+    </div>
+    <div class="sidebar-body">
+      <div class="nav-group-label">Основы <span>04</span></div><nav class="catalog-nav" aria-label="Основы">
+        <a href="#colors" data-view="colors"><i data-lucide="palette"></i>Цвета и токены</a>
+        <a href="#typography" data-view="typography"><i data-lucide="type"></i>Типографика</a>
+        <a href="#icons" data-view="icons"><i data-lucide="shapes"></i>Иконки</a>
+        <a href="#references" data-view="references"><i data-lucide="images"></i>Фирменный стиль</a>
+      </nav>
+      <div class="nav-group-label">Компоненты <span>13</span></div><nav class="catalog-nav" aria-label="Компоненты">
+        <a href="#buttons" data-view="buttons"><i data-lucide="mouse-pointer-2"></i>Кнопки</a>
+        <a href="#forms" data-view="forms"><i data-lucide="text-cursor-input"></i>Поля и формы</a>
+        <a href="#navigation" data-view="navigation"><i data-lucide="panel-top"></i>Навигация</a>
+        <a href="#feedback" data-view="feedback"><i data-lucide="bell"></i>Обратная связь</a>
+        <a href="#tables" data-view="tables"><i data-lucide="table-2"></i>Таблицы</a>
+        <a href="#cookies" data-view="cookies"><i data-lucide="cookie"></i>Cookie и Метрика</a>
+        <a href="#modals" data-view="modals"><i data-lucide="panels-top-left"></i>Модальные окна</a>
+        <a href="#lightbox" data-view="lightbox"><i data-lucide="image"></i>Lightbox</a>
+        <a href="#cards" data-view="cards"><i data-lucide="layout-grid"></i>Карточки</a>
+        <a href="#lists" data-view="lists"><i data-lucide="list"></i>Списки</a>
+        <a href="#identity" data-view="identity"><i data-lucide="users"></i>Аватары и теги</a>
+        <a href="#site-navigation" data-view="site-navigation"><i data-lucide="panels-top-left"></i>Шапка и панели</a>
+        <a href="#advanced-forms" data-view="advanced-forms"><i data-lucide="list-filter"></i>Расширенные поля</a>
+      </nav>
+      <div class="nav-group-label">Композиции <span>02</span></div><nav class="catalog-nav" aria-label="Композиции">
+        <a href="#compositions" data-view="compositions"><i data-lucide="layers"></i>Композиции интерфейса</a>
+        <a href="#site-blocks" data-view="site-blocks"><i data-lucide="blocks"></i>Блоки сайта</a>
+      </nav>
+      <div class="nav-group-label">Страницы <span>01</span></div><nav class="catalog-nav" aria-label="Страницы">
+        <a href="#pages" data-view="pages"><i data-lucide="layout-template"></i>Рабочие страницы</a>
+      </nav>
+      <div class="nav-group-label">Документация <span>01</span></div><nav class="catalog-nav" aria-label="Документация">
+        <a href="#integration" data-view="integration"><i data-lucide="book-open"></i>Подключение и API</a>
+      </nav>
+    </div>
+    <div class="sidebar-footer"><span class="status-dot"></span><span>Версия 1.5.1</span><span class="draft-label">HTML/PHP</span></div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <div class="topbar-path">
+        <button class="btn btn-ghost btn-icon d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Открыть меню"><i data-lucide="menu"></i></button>
+        <span class="path-root">Библиотека</span><i data-lucide="chevron-right"></i><span id="breadcrumbCurrent">Кнопки</span>
+      </div>
+      <div class="topbar-tools">
+        <div class="catalog-search"><i data-lucide="search"></i><input id="catalogSearch" type="search" aria-label="Найти компонент" placeholder="Найти компонент" autocomplete="off"><div id="searchResults" class="search-results" hidden></div></div>
+        <div class="theme-switch" role="group" aria-label="Тема">
+          <button type="button" class="theme-option" data-theme="light" aria-label="Светлая тема" aria-pressed="false" data-bs-toggle="tooltip" title="Светлая тема"><i data-lucide="sun"></i></button>
+          <button type="button" class="theme-option active" data-theme="dark" aria-label="Тёмная тема" aria-pressed="true" data-bs-toggle="tooltip" title="Тёмная тема"><i data-lucide="moon"></i></button>
+        </div>
+        <div class="dropdown"><button class="btn btn-primary btn-sm export-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i data-lucide="download"></i><span>Экспорт</span><i data-lucide="chevron-down"></i></button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="ui-kit.zip" download><i data-lucide="package"></i>Веб-библиотека ZIP</a></li>
+            <li><a class="dropdown-item" href="ui-kit-catalog.zip" download><i data-lucide="package-open"></i>Полный каталог ZIP</a></li>
+            <li><a class="dropdown-item" href="tokens.json" download><i data-lucide="braces"></i>Дизайн-токены JSON</a></li>
+            <li><a class="dropdown-item" href="ui-kit.css" download><i data-lucide="file-code-2"></i>Тема CSS</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <div class="page-heading"><div><div class="eyebrow" id="pageEyebrow">Компоненты / 01</div><h1 class="brand-heading" id="pageTitle">Кнопки</h1></div><div class="page-meta"><span class="meta-dot"></span><span id="pageMeta">Button</span><span class="web-tag">WEB</span></div></div>
+      <div id="view"></div>
+      <footer class="workspace-footer"><span>BRAND UI <span class="footer-slash">/</span> 1.5.1</span><span>Чёрный. Белый. Лайм.</span></footer>
+    </main>
+  </div>
+
+  <div class="modal fade" id="demoDialog" tabindex="-1" aria-labelledby="demoDialogTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h2 class="modal-title" id="demoDialogTitle">Запись на консультацию</h2><button class="btn btn-ghost btn-icon" data-bs-dismiss="modal" type="button" aria-label="Закрыть диалог"><i data-lucide="x"></i></button></div><div class="modal-body" id="demoDialogBody"></div></div></div></div>
+  <div class="modal fade" id="referenceDialog" tabindex="-1" aria-labelledby="referenceDialogTitle" aria-hidden="true"><div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h2 class="modal-title" id="referenceDialogTitle">Фирменный стиль</h2><button class="btn btn-ghost btn-icon" data-bs-dismiss="modal" type="button" aria-label="Закрыть изображение"><i data-lucide="x"></i></button></div><div class="modal-body reference-full"><img id="referenceImage" src="assets/references/01-form.png" alt=""></div></div></div></div>
+  <div id="modalExamplesRoot"></div>
+  <script src="vendor/bootstrap.bundle.min.js"></script>
+  <script src="vendor/lucide.min.js"></script>
+  <script src="tokens.js"></script>
+  <script src="ui-kit.js"></script>
+  <script src="ui-kit-table.js"></script>
+  <script src="ui-kit-forms.js"></script>
+  <script src="ui-kit-inputs.js"></script>
+  <script src="ui-kit-feedback.js"></script>
+  <script src="ui-kit-components.js"></script>
+  <script src="ui-kit-patterns.js"></script>
+  <script src="cookie-consent.js"></script>
+  <script src="examples/overlays.js"></script>
+  <script src="examples/components.js"></script>
+  <script src="examples/advanced-forms.js"></script>
+  <script src="examples/feedback.js"></script>
+  <script src="examples/table.js"></script>
+  <script src="examples/site-blocks.js"></script>
+  <script src="examples/density.js"></script>
+  <script src="examples/patterns.js"></script>
+  <script src="examples/mobile.js"></script>
+  <script src="examples/pages.js"></script>
+  <script src="catalog-examples.js"></script>
+  <script src="catalog.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cookie и конфиденциальность / Brand UI</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../ui-kit.css">
+</head>
+<body>
+  <main class="container py-5" style="max-width: 780px">
+    <h1 class="brand-heading mb-4">Конфиденциальность</h1>
+    <div class="d-flex flex-wrap gap-3 align-items-center mb-5"><button class="btn btn-secondary" type="button" id="openCookies"><i data-lucide="sliders-horizontal"></i>Настройки cookie</button><span class="small text-body-secondary" id="consentStatus" role="status">Яндекс Метрика выключена</span></div>
+    <section id="privacy">
+      <h2 class="brand-heading fs-4 mb-3">Данные и cookie</h2>
+      <p>Этот пример сохраняет ваш выбор в localStorage браузера под ключом <code>brand-cookie-example</code> на срок до 180 дней. Вы можете изменить его в настройках cookie.</p>
+      <p>Яндекс Метрика в этом примере не подключена. Данные о посещениях не отправляются в сервис аналитики независимо от выбранного переключателя.</p>
+      <p>На рабочем сайте политика cookie должна описывать фактические цели обработки, данные, сроки хранения и используемые сервисы.</p>
+      <p><a href="https://yandex.ru/support/metrica/ru/general/cookie-usage">Cookie Яндекс Метрики</a> · <a href="https://yandex.ru/support/metrica/ru/code/data-collected">Данные, собираемые Метрикой</a></p>
+    </section>
+  </main>
+  <div id="cookieHost"></div>
+  <script src="../vendor/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/lucide-core.min.js"></script>
+  <script src="../ui-kit.js"></script>
+  <script src="../cookie-consent.js"></script>
+  <script src="cookies.js"></script>
+</body>
+</html>

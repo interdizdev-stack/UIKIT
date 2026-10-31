@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brand UI / Форма</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="../ui-kit.css">
+  <style>
+    main { width: min(100% - 32px, 420px); margin: 48px auto; }
+    h1 { font-size: 32px; }
+    #result { margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="brand-heading">Запись на консультацию</h1>
+    <div class="brand-divider"></div>
+    <form class="brand-form" id="consultation" data-brand-form novalidate>
+      <div class="form-field">
+        <label class="form-label" for="name">Имя</label>
+        <div class="field-icon"><i data-lucide="user-round"></i><input class="form-control" id="name" name="name" autocomplete="given-name" minlength="2" required placeholder="Ваше имя" aria-describedby="nameError"><div class="invalid-feedback" id="nameError">Укажите имя, минимум 2 символа.</div></div>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="email">Электронная почта</label>
+        <input class="form-control" type="email" id="email" name="email" autocomplete="email" required placeholder="name@example.com" aria-describedby="emailError">
+        <div class="invalid-feedback" id="emailError">Укажите корректный email.</div>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="phone">Телефон</label>
+        <input class="form-control" type="tel" data-tel-input inputmode="tel" id="phone" name="phone" autocomplete="tel" required placeholder="+7 (900) 000-00-00" pattern="(?:\+7|8) \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}|\+[0-9]{7,16}" aria-describedby="phoneError">
+        <div class="invalid-feedback" id="phoneError">Укажите корректный номер телефона.</div>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="time">Удобное время</label>
+        <select class="form-select" id="time" name="time" required aria-describedby="timeError"><option value="">Выберите время</option><option>10:00–12:00</option><option>12:00–15:00</option><option>15:00–18:00</option></select>
+        <div class="invalid-feedback" id="timeError">Выберите удобное время.</div>
+      </div>
+      <div class="form-check"><input class="form-check-input" type="checkbox" id="consent" name="consent" required aria-describedby="consentError"><label class="form-check-label" for="consent">Согласен на обработку данных</label><div class="invalid-feedback" id="consentError">Подтвердите согласие.</div></div>
+      <button class="btn btn-primary brand-cta" type="submit">Отправить заявку<i data-lucide="arrow-right"></i></button>
+    </form>
+    <div class="brand-alert success" id="result" role="status" hidden><i data-lucide="circle-check"></i><div><strong>Проверка пройдена</strong><p>Это образец. Данные никуда не отправлены.</p></div></div>
+  </main>
+  <script src="../vendor/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/lucide-core.min.js"></script>
+  <script src="../ui-kit.js"></script>
+  <script src="../ui-kit-forms.js"></script>
+  <script src="form.js"></script>
+</body>
+</html>

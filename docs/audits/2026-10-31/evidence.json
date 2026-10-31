@@ -1,0 +1,1232 @@
+{
+  "auditDate": "2026-10-31",
+  "sourceCommit": "a0846ff",
+  "runtimeVersion": "1.0.5",
+  "generatedAt": "2026-10-31T18:10:07.589Z",
+  "environment": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.47",
+    "revision": "@1d17a2e2ee147bb7d6ae2ab6abdb3a2510c17775",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.19"
+  },
+  "method": {
+    "viewportWidths": [
+      1440,
+      768,
+      390,
+      320
+    ],
+    "viewportHeight": 900,
+    "deviceScaleFactor": 1,
+    "mobile": false,
+    "captures": 25,
+    "profile": "isolated temporary Chrome profile",
+    "origin": "temporary 127.0.0.1 server"
+  },
+  "verification": {
+    "startedAt": "2026-10-31T18:11:13.819679+00:00",
+    "browserChecks": true,
+    "checks": [
+      {
+        "name": "tokens",
+        "returnCode": 0,
+        "passes": 1,
+        "seconds": 0.13
+      },
+      {
+        "name": "icons",
+        "returnCode": 0,
+        "passes": 1,
+        "seconds": 0.18
+      },
+      {
+        "name": "assets",
+        "returnCode": 0,
+        "passes": 1,
+        "seconds": 0.04
+      },
+      {
+        "name": "static",
+        "returnCode": 0,
+        "passes": 1,
+        "seconds": 0.14
+      },
+      {
+        "name": "browser",
+        "returnCode": 0,
+        "passes": 52,
+        "seconds": 23.45
+      },
+      {
+        "name": "inputs",
+        "returnCode": 0,
+        "passes": 29,
+        "seconds": 2.26
+      },
+      {
+        "name": "dropdowns",
+        "returnCode": 0,
+        "passes": 53,
+        "seconds": 8.26
+      },
+      {
+        "name": "feedback",
+        "returnCode": 0,
+        "passes": 22,
+        "seconds": 2.72
+      },
+      {
+        "name": "data-gallery",
+        "returnCode": 0,
+        "passes": 27,
+        "seconds": 4.88
+      },
+      {
+        "name": "site-blocks",
+        "returnCode": 0,
+        "passes": 17,
+        "seconds": 2.36
+      },
+      {
+        "name": "catalog",
+        "returnCode": 0,
+        "passes": 61,
+        "seconds": 5.44
+      },
+      {
+        "name": "accessibility",
+        "returnCode": 0,
+        "passes": 19,
+        "seconds": 2.37
+      },
+      {
+        "name": "visual",
+        "returnCode": 0,
+        "passes": 4,
+        "seconds": 1.87
+      }
+    ],
+    "node": "v22.22.1",
+    "chrome": "Google Chrome 156.0.8078.47",
+    "finishedAt": "2026-10-31T18:12:11.345084+00:00",
+    "status": "pass"
+  },
+  "catalogExamples": [
+    {
+      "id": "button",
+      "route": "buttons",
+      "title": "Настраиваемая кнопка",
+      "states": [
+        "Обычное",
+        "Hover",
+        "Focus",
+        "Disabled",
+        "Loading"
+      ]
+    },
+    {
+      "id": "button-variants",
+      "route": "buttons",
+      "title": "Варианты, размеры и состояния кнопок",
+      "states": [
+        "Default",
+        "Hover",
+        "Focus",
+        "Disabled",
+        "Loading"
+      ]
+    },
+    {
+      "id": "consultation",
+      "route": "forms",
+      "title": "Форма консультации",
+      "states": [
+        "Idle",
+        "Invalid",
+        "Ready",
+        "Loading",
+        "Success",
+        "Error"
+      ]
+    },
+    {
+      "id": "form-states",
+      "route": "forms",
+      "title": "Input, select, checkbox, radio, switch, range и readonly",
+      "states": [
+        "Default",
+        "Valid",
+        "Invalid",
+        "Disabled",
+        "Readonly"
+      ]
+    },
+    {
+      "id": "navigation",
+      "route": "navigation",
+      "title": "Вкладки, меню, breadcrumbs и пагинация",
+      "states": [
+        "Active",
+        "Inactive",
+        "Open",
+        "Closed",
+        "Focus"
+      ]
+    },
+    {
+      "id": "feedback",
+      "route": "feedback",
+      "title": "Уведомления, загрузка, skeleton и retry",
+      "states": [
+        "Info",
+        "Success",
+        "Warning",
+        "Error",
+        "Loading",
+        "Empty",
+        "No-results",
+        "Ready"
+      ]
+    },
+    {
+      "id": "table",
+      "route": "tables",
+      "title": "Таблица: выбор, сортировка, bulk, страницы и retry",
+      "states": [
+        "Ready",
+        "Empty",
+        "No-results",
+        "Loading",
+        "Error",
+        "Selected",
+        "Bulk busy"
+      ]
+    },
+    {
+      "id": "cookie-bar",
+      "route": "cookies",
+      "title": "Cookie: bar",
+      "states": [
+        "Notice",
+        "Settings",
+        "Necessary only",
+        "All accepted"
+      ]
+    },
+    {
+      "id": "cookie-corner",
+      "route": "cookies",
+      "title": "Cookie: corner",
+      "states": [
+        "Notice",
+        "Settings",
+        "Necessary only",
+        "All accepted"
+      ]
+    },
+    {
+      "id": "cookie-modal",
+      "route": "cookies",
+      "title": "Cookie: modal",
+      "states": [
+        "Notice",
+        "Settings",
+        "Necessary only",
+        "All accepted"
+      ]
+    },
+    {
+      "id": "modal-message",
+      "route": "modals",
+      "title": "Информационное окно",
+      "states": [
+        "Closed",
+        "Open",
+        "Focus trap",
+        "Invalid / form"
+      ]
+    },
+    {
+      "id": "modal-confirm",
+      "route": "modals",
+      "title": "Подтверждение",
+      "states": [
+        "Closed",
+        "Open",
+        "Focus trap",
+        "Invalid / form"
+      ]
+    },
+    {
+      "id": "modal-form",
+      "route": "modals",
+      "title": "Форма в modal",
+      "states": [
+        "Closed",
+        "Open",
+        "Focus trap",
+        "Invalid / form"
+      ]
+    },
+    {
+      "id": "gallery",
+      "route": "lightbox",
+      "title": "Галерея: zoom, fullscreen, thumbnails и swipe",
+      "states": [
+        "Loading",
+        "Ready",
+        "Error",
+        "Zoom",
+        "Fullscreen"
+      ]
+    },
+    {
+      "id": "cards",
+      "route": "cards",
+      "title": "Карточки",
+      "states": [
+        "Default",
+        "Hover",
+        "Focus",
+        "Open / navigation"
+      ]
+    },
+    {
+      "id": "lists",
+      "route": "lists",
+      "title": "Списки",
+      "states": [
+        "Default",
+        "Hover",
+        "Focus",
+        "Open / navigation"
+      ]
+    },
+    {
+      "id": "identity",
+      "route": "identity",
+      "title": "Аватары и теги",
+      "states": [
+        "Fallback",
+        "Image / error",
+        "Selected",
+        "Disabled",
+        "Removed"
+      ]
+    },
+    {
+      "id": "site-navigation",
+      "route": "site-navigation",
+      "title": "Шапка, подвал и панели",
+      "states": [
+        "Default",
+        "Hover",
+        "Focus",
+        "Open / navigation"
+      ]
+    },
+    {
+      "id": "advanced-all",
+      "route": "advanced-forms",
+      "title": "Все расширенные поля и stepper",
+      "states": [
+        "Default",
+        "Valid",
+        "Invalid",
+        "Disabled",
+        "Readonly",
+        "Loading",
+        "No-results"
+      ]
+    },
+    {
+      "id": "advanced-1",
+      "route": "advanced-forms",
+      "title": "Составные поля",
+      "states": [
+        "Default",
+        "Invalid",
+        "Disabled",
+        "Readonly",
+        "Состояния через действия примера"
+      ]
+    },
+    {
+      "id": "advanced-2",
+      "route": "advanced-forms",
+      "title": "Пароль, дата и время",
+      "states": [
+        "Default",
+        "Invalid",
+        "Disabled",
+        "Readonly",
+        "Состояния через действия примера"
+      ]
+    },
+    {
+      "id": "advanced-3",
+      "route": "advanced-forms",
+      "title": "Поиск и выбор",
+      "states": [
+        "Default",
+        "Invalid",
+        "Disabled",
+        "Readonly",
+        "Состояния через действия примера"
+      ]
+    },
+    {
+      "id": "advanced-4",
+      "route": "advanced-forms",
+      "title": "Файлы",
+      "states": [
+        "Default",
+        "Invalid",
+        "Disabled",
+        "Readonly",
+        "Состояния через действия примера"
+      ]
+    },
+    {
+      "id": "advanced-5",
+      "route": "advanced-forms",
+      "title": "Пошаговая форма",
+      "states": [
+        "Default",
+        "Invalid",
+        "Disabled",
+        "Readonly",
+        "Состояния через действия примера"
+      ]
+    },
+    {
+      "id": "advanced-6",
+      "route": "advanced-forms",
+      "title": "Состояния контролов",
+      "states": [
+        "Default",
+        "Invalid",
+        "Disabled",
+        "Readonly",
+        "Состояния через действия примера"
+      ]
+    },
+    {
+      "id": "site-hero",
+      "route": "site-blocks",
+      "title": "Первый экран",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-features",
+      "route": "site-blocks",
+      "title": "Преимущества",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-services",
+      "route": "site-blocks",
+      "title": "Услуги",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-steps",
+      "route": "site-blocks",
+      "title": "Этапы",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-timeline",
+      "route": "site-blocks",
+      "title": "История проекта",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-cases",
+      "route": "site-blocks",
+      "title": "Кейс и результат",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-testimonials",
+      "route": "site-blocks",
+      "title": "Отзывы",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-trust",
+      "route": "site-blocks",
+      "title": "Доверие",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-comparison",
+      "route": "site-blocks",
+      "title": "Сравнение и условия",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-statistics",
+      "route": "site-blocks",
+      "title": "Крупные числа",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-promo",
+      "route": "site-blocks",
+      "title": "Промо и CTA",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-faq",
+      "route": "site-blocks",
+      "title": "Вопросы и ответы",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-contact",
+      "route": "site-blocks",
+      "title": "Контакты и формы",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "site-graphics",
+      "route": "site-blocks",
+      "title": "Декоративная графика",
+      "states": [
+        "Light",
+        "Dark",
+        "Desktop",
+        "Mobile",
+        "Focus",
+        "Invalid / contact"
+      ]
+    },
+    {
+      "id": "palette",
+      "route": "colors",
+      "title": "Палитра, отступы, границы и контраст",
+      "states": [
+        "Light",
+        "Dark"
+      ]
+    },
+    {
+      "id": "typography",
+      "route": "typography",
+      "title": "Типографика и роли текста",
+      "states": [
+        "Light",
+        "Dark",
+        "Адаптивный display"
+      ]
+    },
+    {
+      "id": "references",
+      "route": "references",
+      "title": "Исходные референсы и фирменные приёмы",
+      "states": [
+        "Light",
+        "Dark",
+        "Lightbox"
+      ]
+    },
+    {
+      "id": "icon",
+      "route": "icons",
+      "title": "Выбранная иконка",
+      "states": [
+        "Decorative",
+        "Meaningful",
+        "16 / 24 / 32 / 48 px"
+      ]
+    }
+  ],
+  "layoutViews": [
+    {
+      "route": "#buttons",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": null
+    },
+    {
+      "route": "#forms",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": null
+    },
+    {
+      "route": "#navigation",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": null
+    },
+    {
+      "route": "#tables",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": {
+        "width": 1085,
+        "rowHeights": [
+          60.5,
+          69,
+          69,
+          69,
+          69,
+          69
+        ]
+      }
+    },
+    {
+      "route": "#cards",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": null
+    },
+    {
+      "route": "#lists",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": null
+    },
+    {
+      "route": "#identity",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": null
+    },
+    {
+      "route": "#site-navigation",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": null
+    },
+    {
+      "route": "#advanced-forms",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": null
+    },
+    {
+      "route": "#feedback",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": null
+    },
+    {
+      "route": "#site-blocks",
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "table": {
+        "width": 1120,
+        "rowHeights": [
+          50.1,
+          53.8,
+          53.8,
+          53.8,
+          53.8
+        ]
+      }
+    },
+    {
+      "route": "#buttons",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": null
+    },
+    {
+      "route": "#forms",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": null
+    },
+    {
+      "route": "#navigation",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": null
+    },
+    {
+      "route": "#tables",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": {
+        "width": 653,
+        "rowHeights": [
+          60.5,
+          69,
+          69,
+          69,
+          69,
+          69
+        ]
+      }
+    },
+    {
+      "route": "#cards",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": null
+    },
+    {
+      "route": "#lists",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": null
+    },
+    {
+      "route": "#identity",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": null
+    },
+    {
+      "route": "#site-navigation",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": null
+    },
+    {
+      "route": "#advanced-forms",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": null
+    },
+    {
+      "route": "#feedback",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": null
+    },
+    {
+      "route": "#site-blocks",
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "table": {
+        "width": 688,
+        "rowHeights": [
+          50.1,
+          53.8,
+          53.8,
+          53.8,
+          53.8
+        ]
+      }
+    },
+    {
+      "route": "#buttons",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": null
+    },
+    {
+      "route": "#forms",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": null
+    },
+    {
+      "route": "#navigation",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": null
+    },
+    {
+      "route": "#tables",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": {
+        "width": 620,
+        "rowHeights": [
+          60.5,
+          69,
+          69,
+          69,
+          69,
+          69
+        ]
+      }
+    },
+    {
+      "route": "#cards",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": null
+    },
+    {
+      "route": "#lists",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": null
+    },
+    {
+      "route": "#identity",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": null
+    },
+    {
+      "route": "#site-navigation",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": null
+    },
+    {
+      "route": "#advanced-forms",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": null
+    },
+    {
+      "route": "#feedback",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": null
+    },
+    {
+      "route": "#site-blocks",
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "table": {
+        "width": 560,
+        "rowHeights": [
+          50.1,
+          53.8,
+          53.8,
+          53.8,
+          53.8
+        ]
+      }
+    },
+    {
+      "route": "#buttons",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": null
+    },
+    {
+      "route": "#forms",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": null
+    },
+    {
+      "route": "#navigation",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": null
+    },
+    {
+      "route": "#tables",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": {
+        "width": 620,
+        "rowHeights": [
+          60.5,
+          69,
+          69,
+          69,
+          69,
+          69
+        ]
+      }
+    },
+    {
+      "route": "#cards",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": null
+    },
+    {
+      "route": "#lists",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": null
+    },
+    {
+      "route": "#identity",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": null
+    },
+    {
+      "route": "#site-navigation",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": null
+    },
+    {
+      "route": "#advanced-forms",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": null
+    },
+    {
+      "route": "#feedback",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": null
+    },
+    {
+      "route": "#site-blocks",
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "table": {
+        "width": 560,
+        "rowHeights": [
+          50.1,
+          53.8,
+          53.8,
+          53.8,
+          53.8
+        ]
+      }
+    }
+  ],
+  "measures": {
+    "consultation": {
+      "catalog": {
+        "fieldMargins": [
+          "20px",
+          "20px",
+          "20px",
+          "20px"
+        ],
+        "fieldGaps": [
+          20,
+          20,
+          20
+        ],
+        "submitWidth": 398,
+        "formWidth": 398,
+        "catalogCSS": true
+      },
+      "copied": {
+        "fieldMargins": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "fieldGaps": [
+          0,
+          0,
+          0
+        ],
+        "submitWidth": 223,
+        "formWidth": 223,
+        "catalogCSS": false
+      }
+    },
+    "sizes": [
+      {
+        "class": "btn btn-primary btn-sm",
+        "width": 58.3,
+        "height": 36,
+        "font": "12px",
+        "lineHeight": "18px",
+        "padding": "7px 12px"
+      },
+      {
+        "class": "btn btn-primary",
+        "width": 84.5,
+        "height": 44,
+        "font": "13px",
+        "lineHeight": "19.5px",
+        "padding": "11px 18px"
+      },
+      {
+        "class": "btn btn-primary btn-lg",
+        "width": 90.6,
+        "height": 54.5,
+        "font": "15px",
+        "lineHeight": "22.5px",
+        "padding": "15px 24px"
+      },
+      {
+        "class": "btn btn-primary btn-icon",
+        "width": 40,
+        "height": 40,
+        "font": "13px",
+        "lineHeight": "19.5px",
+        "padding": "0px"
+      },
+      {
+        "class": "btn btn-primary btn-sm btn-icon",
+        "width": 40,
+        "height": 40,
+        "font": "12px",
+        "lineHeight": "18px",
+        "padding": "0px"
+      },
+      {
+        "class": "btn btn-primary btn-lg btn-icon",
+        "width": 40,
+        "height": 40,
+        "font": "15px",
+        "lineHeight": "22.5px",
+        "padding": "0px"
+      },
+      {
+        "class": "form-control form-control-sm",
+        "width": 202,
+        "height": 47,
+        "font": "14px",
+        "lineHeight": "21px",
+        "padding": "12px 14px"
+      },
+      {
+        "class": "form-control ",
+        "width": 202,
+        "height": 47,
+        "font": "14px",
+        "lineHeight": "21px",
+        "padding": "12px 14px"
+      },
+      {
+        "class": "form-control form-control-lg",
+        "width": 202,
+        "height": 47,
+        "font": "14px",
+        "lineHeight": "21px",
+        "padding": "12px 14px"
+      },
+      {
+        "class": "form-select form-select-sm brand-select-trigger",
+        "width": 115.7,
+        "height": 47,
+        "font": "14px",
+        "lineHeight": "21px",
+        "padding": "12px 40px 12px 14px"
+      },
+      {
+        "class": "form-select brand-select-trigger",
+        "width": 99.9,
+        "height": 47,
+        "font": "14px",
+        "lineHeight": "21px",
+        "padding": "12px 40px 12px 14px"
+      },
+      {
+        "class": "form-select form-select-lg brand-select-trigger",
+        "width": 106.9,
+        "height": 47,
+        "font": "14px",
+        "lineHeight": "21px",
+        "padding": "12px 40px 12px 14px"
+      }
+    ],
+    "cta": [
+      {
+        "class": "btn btn-primary brand-cta btn-sm",
+        "height": 41.5,
+        "font": "17px"
+      },
+      {
+        "class": "btn btn-primary brand-cta ",
+        "height": 49.5,
+        "font": "17px"
+      },
+      {
+        "class": "btn btn-primary brand-cta btn-lg",
+        "height": 57.5,
+        "font": "17px"
+      }
+    ],
+    "standaloneTable": {
+      "width": 1100,
+      "rowHeights": [
+        68.5,
+        69,
+        69,
+        69,
+        69,
+        69
+      ],
+      "checkbox": "18px",
+      "headingFont": "11px",
+      "catalogCSS": false
+    },
+    "container": {
+      "viewport": 1440,
+      "width": 320,
+      "columns": "148px 148px",
+      "cardWidths": [
+        148,
+        148,
+        148,
+        148
+      ]
+    },
+    "mobileChoice": {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "menu": [
+        {
+          "width": 293,
+          "height": 135.171875
+        }
+      ]
+    }
+  },
+  "sourceSHA256": {
+    "tokens.json": "8b8b2a5579d74269dcdb79bac07365e30a1d1f02e19fa2771252da76fb558a5b",
+    "ui-kit.css": "d79596191b6fde700b4838e82604d3d796303a38e8306515743b2235800253e7",
+    "catalog.css": "6128cb1ec230a725b45ecc7b3ef0e5c57208049c597e2c963c2c74b900d4d4a7",
+    "catalog.js": "4dcf783a83b129c81085e56606d94b69cc88d09691b7247fc499561c685debc9",
+    "ui-kit-table.js": "e906947d7dfd08a04f6ce9ed8569b8f8254142a386df9948d3e85b3994f7ca3f",
+    "scripts/audit-ui.mjs": "0e766e87ad6a54eb5c8e66b8d5216c99169280cebf2823a71003b510d6daa300"
+  },
+  "screenshots": {
+    "choice-open-390-light.png": "986445b1b76b3f1df5fda5d32156223d8b99deb2b1b12b48bad3d92523bbc36c",
+    "container-probe-1440.png": "c979f8956f8f8c7a925546966f251de899304398b9c4311ae656a5fbf6ebf386",
+    "desktop.png": "f9305a770f9dd1a34397713ffc8defdcfac2808f0228930c131a7f1089b7669f",
+    "mobile-core.png": "102751c8c3a5c224cd3b41ef2b96d86f54f5253e00ce91d4722a497a5cebbaee",
+    "mobile-patterns.png": "7f54028605ed8599c7772c34ca53447ccec3fdc226884f719f7fdb1e34839d69",
+    "size-probe-1440.png": "583909e62a207b7f0ef145959da1a81b23fb071abd0c29c420650c90c06d2c06"
+  },
+  "limitations": [
+    "Desktop Chrome viewport emulation only",
+    "No real touch or software keyboard verification",
+    "No Firefox, Safari, iOS, Android or screen reader run"
+  ]
+}
