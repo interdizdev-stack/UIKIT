@@ -23,6 +23,7 @@ python3 scripts/release.py      # Генерация токенов/иконок
 | browser.mjs | 21 маршрута × 2 темы × 4 ширины, общие сценарии и контраст |
 | inputs.mjs | Нативные значения/события, выбор, файлы, password, stepper и cleanup |
 | dropdowns.mjs | Все select 21 маршрута, hover/ARIA/selected, disabled, chevron, preview/pageSize, меню действий/поиск, темы/ширины и offline |
+| geometry.mjs | Геометрия открытых меню, короткий/длинный текст, coarse pointer, узкие контейнеры, переносимые вкладки/палитра/типографика |
 | density.mjs | Размеры controls/input groups, две плотности × две темы × четыре ширины, вложенность, popup в body, переносимость формы/таблицы, рост текста, эмуляция coarse pointer и offline |
 | patterns.mjs | Композиции в 16 сочетаниях, radio keyboard/FormData, summary/server errors, draft/apply/cancel/reset, copy success/error/late result и scoped cleanup |
 | mobile.mjs | 16 сочетаний, контейнер, table/list/focus, panels, columns, chips, coarse pointer, viewport/toast/offline |
@@ -79,3 +80,20 @@ Firefox использует временный профиль в test-results
 Visual проверяет 16 сочетаний: 320/390/768/1440 px × light/dark × default/compact.
 `node tests/visual.mjs --capture` сохраняет текущие снимки без изменения baseline;
 после визуального просмотра допустим `--update`. Обновление не заменяет поиск причин diff.
+
+Полный визуальный инвентарь воспроизводится без дополнительных пакетов:
+
+```sh
+node scripts/audit-visual.mjs --capture
+node scripts/audit-visual.mjs --stress --capture
+```
+
+Первый проход проверяет все записи в 16 сочетаниях. Второй проверяет все
+применимые состояния в тех же сочетаниях и все поддерживаемые узкие контейнеры
+240/320 px с длинным текстом в обеих темах/плотностях. Полные PNG и JSON находятся
+в ignored `test-results/visual-audit/`. Без `--capture` сохраняется геометрия;
+снимки проблемных случаев делаются автоматически. Проверяются и прямоугольники
+элементов, и границы реального текста, читаемость выбранных значений и ширина меню.
+Внешние границы viewport применяются к fixed-уведомлениям; подписанные scroll-области
+таблиц и вкладок допускают внутреннюю прокрутку. Этот инструмент собирает наблюдения,
+а обязательные assertions регрессий входят в geometry.mjs и общий verify.py.

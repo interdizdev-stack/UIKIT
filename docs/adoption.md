@@ -37,7 +37,7 @@ AGENTS.md закрепляет обязательное применение, sk
 
 Дизайн-система: UI KIT.
 Путь библиотеки: assets/brand-ui/.
-Версия при подключении: 1.5.1; фактическая версия — assets/brand-ui/tokens.json.
+Версия при подключении: 1.5.2; фактическая версия — assets/brand-ui/tokens.json.
 Правила дизайна: assets/brand-ui/DESIGN.md.
 Подключение и API: assets/brand-ui/README.md и assets/brand-ui/docs/api.md.
 Проектные стили: assets/css/project.css, после ui-kit.css.

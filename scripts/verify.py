@@ -34,7 +34,7 @@ for path in sorted(ROOT.glob('*.js'))+sorted(ROOT.joinpath('examples').glob('*.j
 print('PASS JavaScript syntax',flush=True)
 if not args.static_only:
  run('preview',[sys.executable,'tests/preview.py'])
- for name in ['browser','inputs','dropdowns','density','patterns','mobile','pages','system','feedback','data-gallery','site-blocks','catalog','accessibility','visual']:run(name,['node','tests/'+name+'.mjs'])
+ for name in ['browser','inputs','dropdowns','geometry','density','patterns','mobile','pages','system','feedback','data-gallery','site-blocks','catalog','accessibility','visual']:run(name,['node','tests/'+name+'.mjs'])
 if not args.static_only and os.environ.get('UIKIT_FIREFOX'):run('firefox',['node','tests/firefox.mjs'])
 report['finishedAt']=datetime.now(timezone.utc).isoformat();report['status']='pass'
 (folder/'verification.json').write_text(json.dumps(report,indent=2)+'\n')

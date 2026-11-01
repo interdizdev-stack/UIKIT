@@ -51,11 +51,13 @@
   });
   document.addEventListener('input', function (event) {
     const field = event.target;
+    if (field.id === 'typePhrase') document.querySelectorAll('[data-type-sample]').forEach(sample => { sample.textContent = field.value || field.defaultValue; });
     if (field.id === 'sampleRange') document.getElementById('sampleRangeValue').textContent = field.value + '%';
     if (field.id === 'progressRange') { document.getElementById('progressValue').textContent = field.value + '%'; const progress = document.getElementById('sampleProgress'); progress.setAttribute('aria-valuenow', field.value); progress.firstElementChild.style.width = field.value + '%'; }
   });
   document.addEventListener('click', async function (event) {
     const button = event.target.closest('button'); if (!button) return;
+    if (button.id === 'resetTypePhrase') { const field = document.getElementById('typePhrase'); field.value = field.defaultValue; field.dispatchEvent(new Event('input', { bubbles: true })); field.focus({ preventScroll: true }); }
     if (button.hasAttribute('data-nav-page')) { document.querySelectorAll('[data-nav-page]').forEach(function (item) { item.closest('li').classList.toggle('active', item === button); if (item === button) item.setAttribute('aria-current', 'page'); else item.removeAttribute('aria-current'); }); document.getElementById('navigationPageStatus').textContent = 'Страница ' + button.dataset.navPage + ' из 3'; }
     if (button.dataset.action === 'dialog') { const dialog = document.querySelector('#exampleMessageModal'); if (dialog) { dialog.addEventListener('hidden.bs.modal',()=>{if(button.isConnected)button.focus();},{once:true}); bootstrap.Modal.getOrCreateInstance(dialog).show(); } }
     if (button.dataset.action === 'toast' && BrandUI.toasts) BrandUI.toasts.push({ message: 'Демонстрационное уведомление', duration: 3000 });

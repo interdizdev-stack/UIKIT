@@ -23,7 +23,7 @@
     const entry=get(id);if(!entry)throw new TypeError('Unknown example');const cfg=options(entry,value);
     const base=cfg.base?'<base href="'+escape(cfg.base)+'">\n':'';
     const scripts=['vendor/bootstrap.bundle.min.js',id==='icon'?'vendor/lucide.min.js':'vendor/lucide-core.min.js','ui-kit.js',...entry.modules,...entry.examples,'examples/catalog-demo.js'];
-    let content=entry.markup();if(cfg.container)content='<div data-example-container style="width:100%;max-width:'+cfg.container+'px;margin-inline:auto" class="brand-responsive">'+content+'</div>';
+    let content=entry.markup(cfg);if(cfg.container)content='<div data-example-container style="width:100%;max-width:'+cfg.container+'px;margin-inline:auto" class="brand-responsive">'+content+'</div>';
     if(entry.page==='content')content='<div class="brand-container">'+content+'</div>';
     else if(entry.page!=='app')content='<main class="brand-container brand-section brand-stack">'+(entry.page?'':'<h1 class="brand-page-title">'+escape(entry.title)+'</h1>')+content+'</main>';
     return '<!doctype html>\n<html lang="ru" data-example-id="'+id+'" data-bs-theme="'+cfg.theme+'" data-ui-density="'+cfg.density+'" data-preview-state="'+cfg.state+'" data-preview-long="'+cfg.long+'">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<title>'+escape(entry.title)+'</title>\n<link rel="icon" href="data:,">\n'+base+['vendor/bootstrap.min.css','tokens.css','ui-kit.css'].map(path=>'<link rel="stylesheet" href="'+path+'">').join('\n')+'\n</head>\n<body>\n'+content+'\n'+[...new Set(scripts)].map(path=>'<script src="'+path+'"></script>').join('\n')+'\n<script>BrandUIDemo.setup(document);</script>\n</body>\n</html>\n';

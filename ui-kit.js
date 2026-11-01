@@ -151,7 +151,7 @@
     openSelect.trigger.setAttribute('aria-expanded', 'false');
     openSelect.trigger.removeAttribute('aria-activedescendant');
     openSelect.root.append(openSelect.menu);
-    ['position', 'inset', 'left', 'top', 'width'].forEach(function (property) { openSelect.menu.style.removeProperty(property); });
+    ['position', 'inset', 'left', 'top', 'width', 'min-width', 'max-width'].forEach(function (property) { openSelect.menu.style.removeProperty(property); });
     openSelect = null;
   }
 
@@ -308,12 +308,17 @@
       const bounds = trigger.getBoundingClientRect();
       const topLimit=(window.visualViewport?.offsetTop||0)+8,bottomLimit=(window.visualViewport?.offsetTop||0)+(window.visualViewport?.height||innerHeight)-8;
       const viewportWidth=window.visualViewport?.width||document.documentElement.clientWidth,leftLimit=(window.visualViewport?.offsetLeft||0)+8;
+      // Include option padding/checkmarks, not just the compact trigger's width.
+      // Resolve width before height so wrapping also informs upwards placement.
+      menu.style.width = 'max-content';
+      menu.style.minWidth = Math.min(bounds.width, Math.max(0, viewportWidth - 16)) + 'px';
+      menu.style.maxWidth = Math.max(0, viewportWidth - 16) + 'px';
+      const width = menu.getBoundingClientRect().width;
       const below = bottomLimit - bounds.bottom - 6;
       const above = bounds.top - topLimit - 6;
       const upwards = below < Math.min(menu.scrollHeight + 2, 260) && above > below;
       root.classList.toggle('opens-up', upwards);
       menu.style.maxHeight = Math.max(40, Math.min(260, upwards ? above : below)) + 'px';
-      const width=Math.min(bounds.width,viewportWidth-16);menu.style.width=width+'px';
       menu.style.left = Math.max(leftLimit, Math.min(bounds.left,leftLimit+viewportWidth-width-16))+'px';
       menu.style.top = Math.max(topLimit,Math.min(upwards?bounds.top-menu.getBoundingClientRect().height-6:bounds.bottom+6,bottomLimit-menu.getBoundingClientRect().height))+'px';
     }

@@ -1,4 +1,4 @@
-# Brand UI 1.5.1
+# Brand UI 1.5.2
 
 Общая дизайн-система для PHP/HTML и других веб-проектов. Основа веб-компонентов: Bootstrap 5.3.8. Иконки: Lucide 0.468.0. Шрифты: Manrope и Oswald, сохранены локально.
 
@@ -392,3 +392,5 @@ python3 scripts/release.py
 обновление — [upgrading.md](docs/upgrading.md);
 WOFF2 и optional Lucide subset — [performance.md](docs/performance.md).
 Статус собственной лицензии — [license-status.md](docs/license-status.md).
+
+Визуальная приёмка 1.5.2 и исправления меню/узких контейнеров: [отчёт](docs/visual-audit-2026-11-01.md).

@@ -1,7 +1,7 @@
 /* Generated from tokens.json. */
 window.BrandTokens = {
   "name": "Brand UI",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "colors": {
     "accent": "#C1F000",
     "accent-hover": "#D2FF24",

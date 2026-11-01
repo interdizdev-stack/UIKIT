@@ -110,8 +110,13 @@
     function position() {
       const styles = getComputedStyle(source);
       for (const property of styles) if (property.startsWith('--ui-') || property.startsWith('--bs-')) menu.style.setProperty(property, styles.getPropertyValue(property));
-      const rect = input.getBoundingClientRect(),viewportWidth=window.visualViewport?.width||document.documentElement.clientWidth,leftLimit=(window.visualViewport?.offsetLeft||0)+8,width = Math.min(rect.width, viewportWidth - 16);
-      menu.style.position = 'fixed'; menu.style.inset = 'auto'; menu.style.width = width + 'px'; menu.style.left = Math.max(leftLimit, Math.min(rect.left, leftLimit+viewportWidth-width-16)) + 'px';
+      const rect = input.getBoundingClientRect(),viewportWidth=window.visualViewport?.width||document.documentElement.clientWidth,leftLimit=(window.visualViewport?.offsetLeft||0)+8;
+      menu.style.position = 'fixed'; menu.style.inset = 'auto';
+      menu.style.width = 'max-content';
+      menu.style.minWidth = Math.min(rect.width, Math.max(0, viewportWidth - 16)) + 'px';
+      menu.style.maxWidth = Math.max(0, viewportWidth - 16) + 'px';
+      const width = menu.getBoundingClientRect().width;
+      menu.style.left = Math.max(leftLimit, Math.min(rect.left, leftLimit+viewportWidth-width-16)) + 'px';
       menu.style.maxHeight = '260px';
       const topLimit=(window.visualViewport?.offsetTop||0)+8,bottomLimit=(window.visualViewport?.offsetTop||0)+(window.visualViewport?.height||innerHeight)-8;
       const below = bottomLimit - rect.bottom - 6, above = rect.top - topLimit - 6;

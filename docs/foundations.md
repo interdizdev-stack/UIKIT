@@ -185,3 +185,13 @@ Range использует accent / accent-hover / accent-active для зали
 для границы и кольца фокуса, border-control для дорожки. Disabled получает muted
 и нейтральную границу. В режиме forced colors клавиатурный фокус получает системный
 outline. Стили покрывают WebKit/Blink и Mozilla; фактическая проверка — Chrome.
+
+### Переносимые образцы
+
+Копируемые палитра и типографика используют общие классы `brand-swatch-color`,
+`brand-swatch-name`, `brand-spacing-sample`, `brand-radius-sample`, `brand-token-spec`,
+`brand-contrast-row`, `brand-type-controls`, `brand-type-info` и `brand-type-text`.
+Они входят в ui-kit.css и работают без catalog.css. Семантические цвета палитры
+генерируются для выбранной темы preview. Длинное выбранное значение select
+переносится по строкам; меню учитывает все пункты и может быть шире кнопки,
+сохраняя отступ от краёв viewport и место под галочку.

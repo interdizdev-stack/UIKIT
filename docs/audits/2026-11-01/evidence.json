@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-01",
+  "timezone": "Europe/Moscow",
+  "release": "1.5.2",
+  "baseCommit": "87dd621",
+  "matrix": {
+    "catalogExamples": 86,
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "densities": [
+      "default",
+      "compact"
+    ],
+    "viewportWidths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "normalCases": 1376,
+    "additionalStates": 39,
+    "stateCases": 624,
+    "narrowContainerExamples": 73,
+    "containerWidths": [
+      240,
+      320
+    ],
+    "longContainerCases": 584,
+    "catalogRoutes": 21,
+    "standaloneHTML": 15,
+    "pageCases": 576,
+    "openOverlayCases": 144
+  },
+  "geometricResult": "No unintended document overflow, clipped selected values, text/element bounds violations or avoidable short-option wrapping in final checks. Intentional table/tab scrolling excluded. Empty-state text has an explicit separate regression.",
+  "regressions": {
+    "chrome": 951,
+    "firefox": 90,
+    "geometry": 117,
+    "visualBaselines": 16,
+    "baselineUpdates": 0
+  },
+  "artifacts": "Full JSON/PNG in ignored test-results/visual-audit; selected before/after comparisons retained alongside this file.",
+  "limits": [
+    "Safari not available",
+    "No physical iOS/Android devices",
+    "No physical on-screen keyboard or screen reader",
+    "Manual overview and defect review is not per-pixel expert review of every screenshot"
+  ]
+}
