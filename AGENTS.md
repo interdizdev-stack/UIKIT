@@ -21,8 +21,14 @@ Use its current checkpoint, task IDs, decisions, verification notes and next act
 - Run `git status` before committing and never overwrite unrelated user changes.
 - Git was initialized locally. The user requested saving this project to GitHub on 2026-10-31;
   origin is https://github.com/interdizdev-stack/UIKIT.git (provided 2026-11-01).
-  The repository is private. Publish the ordinary source tree on main, including local
-  dependencies and examples, with clone-first instructions in README. Local and plugin-created
+  The user explicitly authorized updating this public repository on 2026-11-01. Keep it public.
+  Publish only UIKit as an ordinary source repository on main: source files, styles, scripts,
+  tokens, assets, vendored dependencies and examples, plus its documentation, project rules,
+  build/check scripts and tests. README must describe components, integration and usage rules,
+  with clone-first instructions. Release ZIPs are supplementary, never a replacement for the
+  source tree. Do not publish local Git-history bundles, backups, personal notes, credentials,
+  browser profiles, caches or generated test results. In particular, leave `agy audit.md`
+  untracked and unpublished. Local and plugin-created
   remote commit graphs may differ: do not force-push over either history. Read ROADMAP.md
   before synchronizing through native Git; its authentication is separate from the plugin.
   Preserve repository visibility and do not publish to another destination without a user request.
