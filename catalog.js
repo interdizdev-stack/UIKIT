@@ -344,7 +344,7 @@
       if (active) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
     });
     const renderers = { buttons: buttonsView, forms: formsView, navigation: navigationView, feedback: feedbackView, tables: tablesView, cookies: cookiesView, modals: modalsView, lightbox: lightboxView, cards: function () { return componentsView('cards'); }, lists: function () { return componentsView('lists'); }, identity: function () { return componentsView('identity'); }, 'site-navigation': function () { return componentsView('site-navigation'); }, 'site-blocks': siteBlocksView, 'advanced-forms': advancedView, icons: iconsView, pages:pagesView, compositions:compositionsView, integration: integrationView, colors: colorsView, typography: typographyView, references: referencesView };
-    view.innerHTML = BrandUICatalogExamples.inspector(currentView, exampleId) + renderers[currentView]();
+    view.innerHTML = renderers[currentView]() + BrandUICatalogExamples.inspector(currentView, exampleId);
     BrandUICatalogExamples.mount(view, exampleId);
     if (currentView === 'icons') updateIcons();
     codeVisible = false;
